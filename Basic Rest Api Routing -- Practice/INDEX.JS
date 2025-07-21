@@ -41,7 +41,7 @@ app.route('/api/users/:id').get((req, res) => {
     const id =  req.params.id;
     const body = req.body;
     const index = users.findIndex((user)=> user.id == id);
-    if(id !== -1)
+    if(index !== -1)
     {
         users[index] = {...users[index],...body};
      
