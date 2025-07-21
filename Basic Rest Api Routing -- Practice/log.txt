@@ -1,0 +1,4 @@
+1753078505635 -->  Method : GET  -->  Path  : /api/users 
+1753078508455 -->  Method : GET  -->  Path  : /api/users 
+1753078538861 -->  Method : DELETE  -->  Path  : /api/users/474 
+ 

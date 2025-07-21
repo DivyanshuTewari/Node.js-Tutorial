@@ -6,6 +6,24 @@ const port = 3000;
 //Middleware -->  Form data ko body mein convert karne ke liye
 app.use(express.urlencoded({extended : false})); 
 
+//Creating own Middleware -- >
+
+app.use((req,res,next)=>{
+    console.log("Hello from Middleware 1 ");
+    req.myUserName = "Divyanshu Tewari";
+    next();
+        
+})
+
+app.use((req,res,next)=>{
+    fs.appendFile('./log.txt' , `${Date.now()} -->  Method : ${req.method}  -->  Path  : ${req.path} \n` ,(err , data)=>{
+        next();
+    })
+        
+})
+
+//Routing -->
+
 app.get('/users', (req, res) => {
     const html = `<ul>${users.map((user) => `<li>${user.first_name}</li>`).join("")}</ul>`;
     res.send(html);
