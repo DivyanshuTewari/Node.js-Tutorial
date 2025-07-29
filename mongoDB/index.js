@@ -57,14 +57,24 @@ app.get('/api/users' , async(req,res)=>{
 })
 
 
-app.route('api/users/:id').get(async(req, res)=>{
+app.route('/api/users/:id').get(async(req, res)=>{
     const id = await User.findById(req.params.id);
     if(!id){
         return res.status(404).json({
             msg: "User not found"
+        });
+    }
+    return res.status(200).json(id);
+}).patch(async(req,res)=>{
+    const id = await User.findById(req.params.id);
+    if(!id)
+    {
+        return res.status(404).json({
+            msg : "user not found"
         })
     }
-    return res.status(200).json(user);
+    const body = req.body;
+    
 })
 
 
