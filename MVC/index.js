@@ -1,39 +1,24 @@
-const express = require('express');
+const express = require("express");
 const app = express();
+const {connectMongoDb} = require("./connection");
+const {logReqRes} = require("./middlewares/index.js");
+const userRouter = require("./routes/user");
+
 const PORT = 3000;
-const fs = require('fs');
-const mongoose = require('mongoose');
 
-// Connecting to MongoDB
-mongoose.connect("mongodb://127.0.0.1:27017/MongoDB-Tutorial").then(() => {
-    console.log("Connected to MongoDB");
-}).catch((err)=>{
-    console.log("MongoDB connection failed", err);
-});
+//Connection 
+connectMongoDb("mongodb://127.0.0.1:27017/MVC");
 
-//Schema - Define the structure
-const userSchema = new mongoose.Schema({
-    firstName: {
-        type:String,
-        required:true,
-    },
-    lastName:{
-        type:String,
-        required:true,
-    },
-    email:{
-        type:String,
-        required:true,
-        unique:true,
-    },
-    jobTitle: {
-        type:String,
-    },
-    gender: {
-        type:String,
-    }
-},{timestamps:true});
+//Middlewares
+app.use(express.urlencoded({ extended:false}));
+app.use(express.json());
+app.use(logReqRes("log.txt"));
+
+//Routes
+app.use("/api/users",userRouter);
 
 
-//Model - Using schema to do CRUD Operations
-const User = mongoose.model("user", userSchema);
+app.listen(PORT , () =>{
+    console.log(`Server started at  : ${PORT}`);
+
+})
