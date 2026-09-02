@@ -1,0 +1,18 @@
+{
+  "name": "1first_deploy",
+  "version": "1.0.0",
+  "description": "deploying first demo backend server",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [
+    "node"
+  ],
+  "author": "Divyanshu Tewari",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1"
+  }
+}
