@@ -2,7 +2,48 @@ const express = require('express');
 const app = express();
 const users = require('./MOCK_DATA.json');
 const fs = require('fs');
+const mongoose = require('mongoose');
+
 const port = 3000;
+
+//Connecting to MongoDB
+mongoose.connect("mongodb://127.0.0.1:27017/nodejs-rest-api").then(() => {
+    console.log("Connected to MongoDB")
+}).catch((err)=> {
+    console.log("MongoDB connection failed" , err)
+});
+
+//Schema - Define the structure
+
+const userSchema = new mongoose.Schema({
+    firstName: {
+        type: String,
+        required:true,
+    },
+    lastName: {
+        type: String,
+        required:true,
+    },
+    email:{
+        type: String,
+        required:true,
+        unique:true,
+    },
+    jobTitle: {
+        type : String,
+    },
+
+    gender: {
+        type: String,
+    }
+})
+
+
+//Model - Using Schema we do CRUD Operations
+
+const User = mongoose.model("user" , userSchema);
+
+
 //Middleware -->  Form data ko body mein convert karne ke liye
 app.use(express.urlencoded({extended : false})); 
 
@@ -30,6 +71,8 @@ app.get('/users', (req, res) => {
 })
 
 app.get('/api/users', (req, res) => {
+    res.setHeader("X_Name" , "Divyanshu Tewari");
+
     return res.json(users);
 })
 

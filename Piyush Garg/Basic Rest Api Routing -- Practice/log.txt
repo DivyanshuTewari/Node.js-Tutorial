@@ -1,0 +1,15 @@
+1753078505635 -->  Method : GET  -->  Path  : /api/users 
+1753078508455 -->  Method : GET  -->  Path  : /api/users 
+1753078538861 -->  Method : DELETE  -->  Path  : /api/users/474 
+ 1753375092609 -->  Method : DELETE  -->  Path  : /api/users 
+1753375111127 -->  Method : GET  -->  Path  : /api/users 
+1753375272986 -->  Method : GET  -->  Path  : /api/users 
+1753375404239 -->  Method : GET  -->  Path  : /api/users 
+1753375487872 -->  Method : GET  -->  Path  : /api/users 
+1753375514906 -->  Method : GET  -->  Path  : /api/users 
+1753375584703 -->  Method : GET  -->  Path  : /api/users 
+1754113187240 -->  Method : GET  -->  Path  : /api/users/ 
+1754113187350 -->  Method : GET  -->  Path  : /favicon.ico 
+1754113223933 -->  Method : GET  -->  Path  : /users/ 
+1754113255626 -->  Method : GET  -->  Path  : /users/3 
+1754113263544 -->  Method : GET  -->  Path  : /users/760 

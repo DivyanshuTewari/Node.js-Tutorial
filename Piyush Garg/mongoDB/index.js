@@ -41,7 +41,7 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model("user", userSchema);
 
 //Middleware --> Form data ko body mein convert karne ke liye
-
+app.use(express.json());
 app.use(express.urlencoded({extended:false}));
 
 
@@ -74,7 +74,13 @@ app.route('/api/users/:id').get(async(req, res)=>{
         })
     }
     const body = req.body;
-    
+    const UpdatedData = {...id.toObject(),...body};
+    const UpdatedUser = await User.findByIdAndUpdate(req.params.id,UpdatedData,{new:true});
+    console.log(UpdatedUser);
+    return res.status(200).json({
+        msg:"User updated successfully",
+        user: UpdatedUser
+    })
 })
 
 
